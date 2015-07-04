@@ -124,7 +124,7 @@ public class ClinicController {
     }
 
     /**
-     * Производится запрос и ввод имени
+     * Производится запрос и получение имени
      * животного и его типа, после чего
      * метод возвращает полученное животное
      * @param nameForPet имя животного, ввод
@@ -147,9 +147,11 @@ public class ClinicController {
     }
 
     /**
-     * Производится запрос и ввод имени Персоны,
+     * Добавление новой персоны вклинику
+     * Производится запрос и получение имени Персоны,
+     * методом askAndGetNameForPerson()
      * получение животного с помощью метода
-     * askAndGetPet(), после чего вызывается
+     * askAndGetNameForPet(), после чего вызывается
      * метод add() класса Clinic которому
      * передаеются полченные данные
      */
@@ -165,7 +167,16 @@ public class ClinicController {
     }
 
     /**
-     *
+     * Переименование персоны, поиск по имени персоны
+     * Производится запрос и получение имени Персоны,
+     * методом askAndGetNameForPerson()
+     * после чего с помощью метода getPersonByName()
+     * класса Clinic по полученному имени Персоны
+     * ведется поиск в клинике, если метод не находит Персону
+     * с таким именем, то возвращает null, а если находит, то Персоне
+     * меняется имя методом renPerson() класса Clinic,
+     * новое имя запрашивается методом askForNewNamePerson()
+     * получается методом getString()
      */
     public void renByPersonName() {
         final String getPersonName = this.askAndGetNameForPerson();
@@ -180,6 +191,19 @@ public class ClinicController {
         } else IO.NotFound();
     }
 
+    /**
+     * Переименование животного, поиск по имени животного
+     * Производится запрос и получение имения животного
+     * методом askAndGetNameForPet()
+     * после чего с помощью метода getPersonByPetName
+     * класса Clinic по полученному имени животного
+     * ведется поиск в клинике, если метод не находит
+     * животное с таким именем - возвращает null,
+     * если находит - возвращает персону, по которой
+     * потом меняется имя животного методом setPetName()
+     * класса Person, новое имя запрашивается и получается
+     * методом askForNewNamePet()
+     */
     public void renByPetName() {
         final String getPetName = this.askAndGetNameForPet();
         final Person getPerson = clinic.getPersonByPetName(getPetName);
@@ -189,6 +213,14 @@ public class ClinicController {
         } else IO.NotFound();
     }
 
+    /**
+     * Удаление персоны по имени. Запрос и получение
+     * имени производится методом askAndGetNameForPerson()
+     * Затем по полученному имени производится поиск методом
+     * getPersonByName() класса Clinic, если метод возвращает
+     * не null а персону, то производится её удаление
+     * из клиники методом remove() класса Clinic
+     */
     public void remByPersonName() {
         final String getPersonName = this.askAndGetNameForPerson();
         final Person getPerson = clinic.getPersonByName(getPersonName);
@@ -197,6 +229,14 @@ public class ClinicController {
         } else IO.NotFound();
     }
 
+    /**
+     * Удаление персоны по имени животного. Запрос
+     * и получение имени животного производится методом
+     * askAndGetNameForPet() Затем по полученному имени
+     * осуществляется поиск в клинике методом getPersonByPetName()
+     * класса Clinic, если метод возвращает не null а персону,
+     * то производится её удаление из клиники
+     */
     public void remByPetName() {
         final String getPetName = this.askAndGetNameForPet();
         final Person getPerson = clinic.getPersonByPetName(getPetName);
@@ -205,23 +245,54 @@ public class ClinicController {
         } else IO.NotFound();
     }
 
+    /**
+     * Получение строки методом
+     * getString() класса IO
+     * @return строку
+     */
     public String getString() {
         return IO.getString();
     }
 
+    /**
+     * Получение выбора типа животного
+     * методом getSelectedNumber()
+     * @return число - выбор пользователя
+     */
     public int getChoiceOfTypePet() {
         return this.getSelectedNumber();
     }
 
-
+    /**
+     * Устанавливает состояние поля
+     * on в false, используется для
+     * выхода и цикла программы
+     */
     private void setOff() {
         on = false;
     }
 
+    /**
+     * Получение выбора пункта основного
+     * меню методом getSelectedNumber()
+     * @return число - выбор пользователя
+     */
     public int getChoiceOfMainMenu() {
         return this.getSelectedNumber();
     }
 
+    /**
+     * Получение числа из строки
+     * методом ValueOf() класса-контейнера
+     * Integer, полученной методом getString();
+     * Перехватывается возможная ошибка
+     * наследница класс RuntimeException,
+     * что не рекомендуется :)
+     * @return выбор пользователя
+     * или если пользователь вводит не число
+     * дефолтное значение определенное
+     * в DEFAULT_CHOICE
+     */
     public int getSelectedNumber() {
         int result = this.DEFAULT_CHOICE;
         try {

@@ -16,7 +16,15 @@ public class Clinic {
     private ArrayList<Person> persons =
             new ArrayList<Person>(MAX_SIZE_CLINIC);
 
-
+    /**
+     * метод который производит непосредственно
+     * добавление персон в клинику методом add()
+     * коллекции ArrayList
+     * @param nameForPerson имя добавляемой персоны
+     * @param pet животное добовляемой персоны
+     * @throws UserException если клиника уже заполнена
+     * или Персона с таким именем уже существует
+     */
     public void add(final String nameForPerson, Pet pet) throws UserException {
         if (isClinicFull()) {
             throw new UserException("Clinic full, rem unnecessary persons");
@@ -27,14 +35,33 @@ public class Clinic {
         persons.add(new Person(nameForPerson, pet));
     }
 
+    /**
+     * Получение текущего количества
+     * персон в клинике
+     * @return количество персон в
+     * клинике
+     */
     public int getPersonsCount() {
         return this.persons.size();
     }
 
+    /**
+     * Получение персоны по её номеру в коллекции
+     * методом get() коллекции ArrayList
+     * @param idOfPerson номер персоны в коллекции
+     * @return возвращает полученную персону
+     */
     public Person getPersonById(int idOfPerson) {
         return persons.get(idOfPerson);
     }
 
+    /**
+     * Получение персоны по имени
+     * @param nameOfPersonForFind имя
+     * Персоны для поиска
+     * @return возвращает найденную Персону
+     * или null если Персона не найдена
+     */
     public Person getPersonByName(final String nameOfPersonForFind) {
         Person resultPerson = null;
         for (Person person : persons)
@@ -43,6 +70,13 @@ public class Clinic {
         return resultPerson;
     }
 
+    /**
+     * Получение персоны по имени животного
+     * @param nameOfPetForFind имя животного
+     * для поиска
+     * @return возвращает найденную Персону
+     * или null если Персона не найдена
+     */
     public Person getPersonByPetName(String nameOfPetForFind) {
         Person resultPerson = null;
         for (Person person : persons)
@@ -51,14 +85,32 @@ public class Clinic {
         return resultPerson;
     }
 
+    /**
+     * удаление персоны из клинки по заданной
+     * персоне(или вернее ссылке, как я понял)
+     * @param personForRemove заданная для удаления
+     * персона
+     */
     public void remove(Person personForRemove) {
         this.persons.remove(personForRemove);
     }
 
+    /**
+     * Проверка на заполненность Клиники
+     * @return возвращает true если в
+     * клинике нет мест
+     */
     public boolean isClinicFull() {
         return this.getPersonsCount() == MAX_SIZE_CLINIC;
     }
 
+    /**
+     * Проверка на существование Персоны
+     * с заданным именем в клинике
+     * @param nameOfPerson имя для проверки
+     * @return возвращает true если персона
+     * с заданным именем в клинике уже есть
+     */
     public boolean isPersonAlreadyExist(final String nameOfPerson) {
         boolean result = false;
         for (Person person : persons)
@@ -74,6 +126,11 @@ public class Clinic {
         personToRename.setName(newNameOfPerson);
     }
 
+    /**
+     * возвращает максимальное количество мест
+     * в клинике
+     * @return максимальное количество мест
+     */
     public int getMaxSize() {
         return MAX_SIZE_CLINIC;
     }
