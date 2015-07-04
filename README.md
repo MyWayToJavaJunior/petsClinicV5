@@ -10,7 +10,7 @@ Laravel is accessible, yet powerful, providing powerful tools needed for large, 
 
 ## Благодарности
 
-Выражаем огромню благодарность за курс, Петру Арсентьеву [курс](https://www.youtube.com/channel/UCLUYG3J5lYXs9gwz98aXIsQ)
+Выражаем огромню благодарность за [курс](https://www.youtube.com/channel/UCLUYG3J5lYXs9gwz98aXIsQ) , Петру Арсентьеву 
 
 ## Вопросы безопасности
 
