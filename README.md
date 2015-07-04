@@ -1,8 +1,6 @@
 ## Pets-clinic 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
-
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Pets-clinic это программа, разрабатываема в курсе обучения Java. Она позволяет осуществлять работу с клиентами и их животными. При добавлении новой записи вы должны ввести имя клиента, а так же имя и тип/класс животного. В программе уже имеются три класса животных, и она очень просто расширяется путем добавления новых животных-классов наследуемых от общего абстрактного класса-предка. На текущий момент доступны следющие операции: добавление нового клиента, просмотр списка всех клиентов с выводом подробной информации, поиск и вывод отдельных записей по имени клиента или животного, удаление по имени клиента или животного, переименование как клиента так и его животного. Клиентов с одинаковыми именами в списке быть не может, имена животных могут повторяться.
 
 ## Документация
 
@@ -10,15 +8,12 @@ Laravel is accessible, yet powerful, providing powerful tools needed for large, 
 
 ## Благодарности
 
-Выражаем огромню благодарность за [курс](https://www.youtube.com/channel/UCLUYG3J5lYXs9gwz98aXIsQ) , Петру Арсентьеву 
+Выражаю огромню благодарность за [курс](https://www.youtube.com/channel/UCLUYG3J5lYXs9gwz98aXIsQ), Петру Арсентьеву 
 
-## Вопросы безопасности
+## Вопросы безопасности и ошибки
 
-Если вы найдете уязвимости или ошибки в нашем продукте, просьба уведомить нас по почте [e-mail](somemail@mail.kz) 
+Если вы найдете уязвимости или ошибки в нашем продукте, просьба уведомить меня по почте [e-mail](somemail@mail.kz) 
 
 ### Лицензия
 
-Это свободная программа; вы можете повторно распространять ее и/или
-модифицировать ее в соответствии с Универсальной Общественной Лицензией
-GNU, опубликованной Фондом Свободного ПО; либо версии 2, либо (по вашему
-выбору) любой более поздней версии.
+Это свободная программа; вы можете повторно распространять ее и/или модифицировать ее в соответствии с Универсальной Общественной Лицензией GNU, опубликованной Фондом Свободного ПО; либо версии 2, либо (по вашему выбору) любой более поздней версии.
