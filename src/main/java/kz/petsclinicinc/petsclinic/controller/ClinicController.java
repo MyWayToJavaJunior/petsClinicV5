@@ -63,6 +63,8 @@ public class ClinicController {
                         break;
             case 8:     this.renByPetName();
                         break;
+            case 9:     this.doPetAction();
+                        break;
             case 0:     this.setOff();
 
         }
@@ -77,6 +79,28 @@ public class ClinicController {
     public String askAndGetNameForPerson() {
         IO.askForNamePerson();
         return this.getString();
+    }
+
+    /**
+     * Промежуточная операция,
+     * возвращает Персону по полученому
+     * после запроса имени Персоны
+     * @return возвращает найденную
+     * персону, или null если персона не найдена
+     */
+    public Person askAndGetPersonByName() {
+        return clinic.getPersonByName(askAndGetNameForPerson());
+    }
+
+    /**
+     * Промежуточная операция,
+     * возвращает Персону по полученому
+     * после запроса имени животного
+     * @return возвращает найденную
+     * персону, или null если персона не найдена
+     */
+    public Person askAndGetPersonByPetName() {
+        return clinic.getPersonByPetName(askAndGetNameForPet());
     }
 
     /**
@@ -95,8 +119,7 @@ public class ClinicController {
      * по имени животного
      */
     public void viewByPetName() {
-        final String getPetName = this.askAndGetNameForPet();
-        final Person getPerson = clinic.getPersonByPetName(getPetName);
+        final Person getPerson = this.askAndGetPersonByPetName();
         if (getPerson != null) {
             IO.print(getPerson.toString());
         } else IO.NotFound();
@@ -107,8 +130,7 @@ public class ClinicController {
      * по имени Персоны
      */
     public void viewByPersonName() {
-        final String getPersonName = this.askAndGetNameForPerson();
-        final Person getPerson = clinic.getPersonByName(getPersonName);
+        final Person getPerson = askAndGetPersonByName();
         if (getPerson != null) {
             IO.print(getPerson.toString());
         } else IO.NotFound();
@@ -179,8 +201,7 @@ public class ClinicController {
      * получается методом getString()
      */
     public void renByPersonName() {
-        final String getPersonName = this.askAndGetNameForPerson();
-        final Person getPerson = clinic.getPersonByName(getPersonName);
+        final Person getPerson = this.askAndGetPersonByName();
         if (getPerson != null) {
             IO.askForNewNamePerson();
             try {
@@ -193,7 +214,7 @@ public class ClinicController {
 
     /**
      * Переименование животного, поиск по имени животного
-     * Производится запрос и получение имения животного
+     * Производится запрос и получение имени животного
      * методом askAndGetNameForPet()
      * после чего с помощью метода getPersonByPetName
      * класса Clinic по полученному имени животного
@@ -205,8 +226,7 @@ public class ClinicController {
      * методом askForNewNamePet()
      */
     public void renByPetName() {
-        final String getPetName = this.askAndGetNameForPet();
-        final Person getPerson = clinic.getPersonByPetName(getPetName);
+        final Person getPerson = this.askAndGetPersonByPetName();
         if (getPerson != null) {
             IO.askForNewNamePet();
             getPerson.setPetName(this.getString());
@@ -222,8 +242,7 @@ public class ClinicController {
      * из клиники методом remove() класса Clinic
      */
     public void remByPersonName() {
-        final String getPersonName = this.askAndGetNameForPerson();
-        final Person getPerson = clinic.getPersonByName(getPersonName);
+        final Person getPerson = this.askAndGetPersonByName();
         if (getPerson != null) {
             clinic.remove(getPerson);
         } else IO.NotFound();
@@ -302,4 +321,24 @@ public class ClinicController {
         }
         return result;
     }
+
+    /**
+     * Удаляет все персоны с классом животных
+     * врагов животного заданной Персоны
+     */
+    public void doPetAction() {
+        final Person getPerson = this.askAndGetPersonByName();
+        if (getPerson != null) {
+            final Class<? extends Pet> classOfEnemy = getPerson.getPet().getClassOfEnemy();
+            int idOfPerson = 0;
+            while (idOfPerson < clinic.getPersonsCount()) {
+                if (classOfEnemy.equals(clinic.getPersonById(idOfPerson).getPet().getClass()))
+                {
+                    clinic.remove(clinic.getPersonById(idOfPerson));
+                } else idOfPerson++;
+            }
+        } else IO.NotFound();
+    }
+
+
 }

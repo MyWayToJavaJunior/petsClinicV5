@@ -8,6 +8,6 @@ public class Dog extends Pet {
 
 
     public Dog(final String nameOfPet) {
-        super(nameOfPet, DOG_ABILITY);
+        super(nameOfPet, DOG_ABILITY, Cat.class);
     }
 }
