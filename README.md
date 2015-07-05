@@ -8,7 +8,7 @@ Petsclinic это программа, разрабатываема в курсе
 
 ## Документация
 
-Документацию можно найти на ресурсе [Petsclinic site](http://petsclinic.site40.net/docs/docs.html). Для запуска на вашем компьютере должен быть установлен [JRE](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)
+Документацию можно найти на ресурсе [Petsclinic site](http://petsclinic.site40.net/docs/docs.html). Для запуска на вашем компьютере должен быть установлен [JRE](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html).
 Программа консольная, запуск производится посредством команды<br>
 <code>java -jar имяпрограммы </code><br>
 например:<br>
