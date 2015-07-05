@@ -12,8 +12,8 @@ Petsclinic это программа, разрабатываема в курсе
 Программа консольная, запуск производится посредством команды<br>
 <code>java -jar имяпрограммы </code><br>
 например:<br>
-<code>java -jar petsclinic-1.0.jar</code>
-
+<code>java -jar petsclinic-1.0.jar</code><br>
+Для запуска на вашем компьютере должен быть установлен [JRE](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)
 
 ## Благодарности
 
