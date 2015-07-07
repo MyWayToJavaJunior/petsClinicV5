@@ -30,10 +30,11 @@ public class ClinicController {
      * setOff, который меняет состоние
      * поля on на false
      */
-    public void doWork() {
+    public ClinicController doWork() {
         while(on) {
-            this.MainMenu();
+            this.mainMenu();
         }
+        return null;
     }
 
     /**
@@ -43,7 +44,7 @@ public class ClinicController {
      * выполняет соответсвующую
      * операцию
      */
-    public void MainMenu() {
+    public void mainMenu() {
         IO.showMainMenu();
         switch (this.getChoiceOfMainMenu()) {
             default:
